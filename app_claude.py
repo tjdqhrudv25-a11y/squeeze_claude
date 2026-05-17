@@ -83,7 +83,7 @@ def calc_squeeze_momentum(df: pd.DataFrame,
  
     # ── 볼린저밴드 ──
     bb_basis = calc_sma(close, bb_length)
-    bb_dev   = close.rolling(bb_length).std() * kc_mult   # LazyBear 원본: BB dev에 KC MultFactor(1.5) 사용
+    bb_dev   = close.rolling(bb_length).std(ddof=0) * kc_mult   # LazyBear 원본: BB dev에 KC MultFactor(1.5) 사용
     upper_bb = bb_basis + bb_dev
     lower_bb = bb_basis - bb_dev
  
